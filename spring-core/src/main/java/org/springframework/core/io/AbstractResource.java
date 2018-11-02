@@ -44,9 +44,7 @@ import org.springframework.util.ResourceUtils;
 public abstract class AbstractResource implements Resource {
 
 	/**
-	 * This implementation checks whether a File can be opened,
-	 * falling back to whether an InputStream can be opened.
-	 * This will cover both directories and content resources.
+	 * 判断文件是否会产生异常，如果发生异常就关闭当前的流
 	 */
 	@Override
 	public boolean exists() {
@@ -136,10 +134,7 @@ public abstract class AbstractResource implements Resource {
 	}
 
 	/**
-	 * This implementation reads the entire InputStream to calculate the
-	 * content length. Subclasses will almost always be able to provide
-	 * a more optimal version of this, e.g. checking a File length.
-	 * @see #getInputStream()
+	 * 获取资源的长度
 	 */
 	@Override
 	public long contentLength() throws IOException {
